@@ -1,5 +1,6 @@
 import { StyleSheet, Text, Pressable, View, TextInput, ScrollView } from "react-native"
 import { useState } from 'react';
+import { Button } from 'react-native-paper';
 import Layout from "./Layout";
 
 export default function Main() {
@@ -21,9 +22,8 @@ export default function Main() {
       </ScrollView>
       <View style={{ padding: 10, flexDirection: 'row' }}>
         <TextInput style={styles.inputText} value={text} onChangeText={setText}/>
-        <Pressable onPress={() => addTask(text)} style={styles.button}>
-          <Text style={{color: '#fefefe', textAlign: 'center', fontWeight: 'bold', fontSize: 15}}>+</Text>
-        </Pressable>
+        <Button icon="plus" mode="outlined" onPress={() => addTask(text)}>
+        </Button>
       </View>
     </Layout>
   )
