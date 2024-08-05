@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native"
 import { useState } from 'react';
 import { Button, TextInput } from 'react-native-paper';
-import Layout from "./Layout";
+import {Appbar} from "react-native-paper";
 
 export default function Main() {
   const [text, setText] = useState('')
@@ -12,7 +12,10 @@ export default function Main() {
     setText('')
   }
   return (
-    <Layout>
+    <>
+      <Appbar.Header>
+        <Appbar.Content title="Task" />
+      </Appbar.Header>
       <ScrollView>
         <View>
           {tasks.map((task, index) => (
@@ -34,7 +37,7 @@ export default function Main() {
           +
         </Button>
       </View>
-    </Layout>
+    </>
   )
 }
 
