@@ -1,6 +1,6 @@
-import { StyleSheet, Text, Pressable, View, TextInput, ScrollView } from "react-native"
+import { StyleSheet, Text, View, ScrollView } from "react-native"
 import { useState } from 'react';
-import { Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import Layout from "./Layout";
 
 export default function Main() {
@@ -14,15 +14,24 @@ export default function Main() {
   return (
     <Layout>
       <ScrollView>
-        <View style={{ flex: 1, justifyContent: 'flex-start'}}>
+        <View>
           {tasks.map((task, index) => (
-            <Text style={{color: '#dedede', fontSize: 20, fontWeight: 'bold'}} key={index}> # {task}</Text>
+            <Text
+              key={index}
+            >
+              # {task}
+            </Text>
           ))}
         </View>
       </ScrollView>
-      <View style={{ padding: 10, flexDirection: 'row' }}>
-        <TextInput style={styles.inputText} value={text} onChangeText={setText}/>
-        <Button icon="plus" mode="outlined" onPress={() => addTask(text)}>
+      <View>
+        <TextInput
+          label="Task"
+          value={text}
+          onChangeText={setText}
+        />
+        <Button mode="outlined" onPress={() => addTask(text)}>
+          +
         </Button>
       </View>
     </Layout>
