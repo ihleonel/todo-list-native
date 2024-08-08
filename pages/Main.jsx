@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native"
 import { useState } from 'react';
-import { Button, TextInput } from 'react-native-paper';
-import {Appbar} from "react-native-paper";
+import { TextInput } from 'react-native-paper';
+import { Appbar, Card } from "react-native-paper";
 
 export default function Main() {
   const [text, setText] = useState('')
@@ -14,7 +14,7 @@ export default function Main() {
   return (
     <>
       <Appbar.Header>
-        <Appbar.Content title="Task" />
+        <Appbar.Content title="Tasks" />
       </Appbar.Header>
       <ScrollView>
         <View>
@@ -32,10 +32,8 @@ export default function Main() {
           label="Task"
           value={text}
           onChangeText={setText}
+          right={<TextInput.Icon icon="send" onPress={() => addTask(text)}/>}
         />
-        <Button mode="outlined" onPress={() => addTask(text)}>
-          +
-        </Button>
       </View>
     </>
   )
