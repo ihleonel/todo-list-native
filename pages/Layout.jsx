@@ -2,7 +2,7 @@ import { Provider as PaperProvider, DefaultTheme, MD3DarkTheme } from "react-nat
 
 export default function Layout({children}) {
   return (
-    <PaperProvider theme={DefaultTheme}>
+    <PaperProvider theme={MD3DarkTheme}>
       {children}
     </PaperProvider>
   )

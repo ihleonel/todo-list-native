@@ -1,15 +1,20 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native"
 import { useState } from 'react';
-import { TextInput } from 'react-native-paper';
-import { Appbar, Card } from "react-native-paper";
+import { TextInput, HelperText } from 'react-native-paper';
+import { Appbar } from "react-native-paper";
 
 export default function Main() {
   const [text, setText] = useState('')
+  const [error, setError] = useState(false)
   const [tasks, setTasks] = useState([])
   const addTask = (text) => {
-    if (text === '') return
+    if (text === '') {
+      setError(true)
+      return
+    }
     setTasks([...tasks, text])
     setText('')
+    setError(false)
   }
   return (
     <>
@@ -17,7 +22,7 @@ export default function Main() {
         <Appbar.Content title="Tasks" />
       </Appbar.Header>
       <ScrollView>
-        <View>
+        <View style={{marginHorizontal: 10}}>
           {tasks.map((task, index) => (
             <Text
               key={index}
@@ -27,13 +32,17 @@ export default function Main() {
           ))}
         </View>
       </ScrollView>
-      <View>
+      <View style={{marginHorizontal: 10}}>
         <TextInput
           label="Task"
           value={text}
           onChangeText={setText}
           right={<TextInput.Icon icon="send" onPress={() => addTask(text)}/>}
+          error={error}
         />
+        <HelperText type="error" visible={error}>
+          Task is required
+        </HelperText>
       </View>
     </>
   )
