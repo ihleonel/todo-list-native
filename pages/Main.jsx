@@ -1,20 +1,29 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native"
+import { StyleSheet, View, ScrollView } from "react-native"
 import { useState } from 'react';
 import { TextInput, HelperText } from 'react-native-paper';
 import { Appbar } from "react-native-paper";
+import Task from "../components/tasks/Task";
 
 export default function Main() {
   const [text, setText] = useState('')
   const [error, setError] = useState(false)
   const [tasks, setTasks] = useState([])
+
   const addTask = (text) => {
     if (text === '') {
       setError(true)
       return
     }
-    setTasks([...tasks, text])
+    setTasks([text, ...tasks])
     setText('')
     setError(false)
+  }
+
+  const onRemove = (task) => {
+    if (task === '') {
+      return
+    }
+    setTasks(tasks.filter(el => el !== task))
   }
   return (
     <>
@@ -22,13 +31,9 @@ export default function Main() {
         <Appbar.Content title="Tasks" />
       </Appbar.Header>
       <ScrollView>
-        <View style={{marginHorizontal: 10}}>
+        <View style={{marginHorizontal: 10,}}>
           {tasks.map((task, index) => (
-            <Text
-              key={index}
-            >
-              # {task}
-            </Text>
+            <Task key={index} task={task} remove={onRemove}/>
           ))}
         </View>
       </ScrollView>
