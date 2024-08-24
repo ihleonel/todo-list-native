@@ -30,9 +30,11 @@ export default function Main() {
       <Appbar.Header>
         <Appbar.Content title="Tasks" />
       </Appbar.Header>
-      <ScrollView contentContainerStyle={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end', paddingHorizontal: 10, paddingVertical: 10}}>
+      <ScrollView contentContainerStyle={{padding: 16}}>
           {tasks.map((task, index) => (
-            <Task key={index} task={task} remove={onRemove} />
+            <View key={index}>
+              <Task task={task} remove={onRemove} />
+            </View>
           ))}
       </ScrollView>
       <View style={{marginHorizontal: 10}}>
