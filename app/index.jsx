@@ -1,5 +1,5 @@
-import Main from "../pages/Main";
+import Home from "../pages/Home"
 
 export default function Index() {
-  return <Main />
+  return <Home />
 }

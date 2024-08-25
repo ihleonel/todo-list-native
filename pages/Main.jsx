@@ -3,8 +3,12 @@ import { useState } from 'react';
 import { TextInput, HelperText } from 'react-native-paper';
 import { Appbar } from "react-native-paper";
 import Task from "../components/tasks/Task";
+import { useRouter } from "expo-router";
 
 export default function Main() {
+
+  const router = useRouter()
+
   const [text, setText] = useState('')
   const [error, setError] = useState(false)
   const [tasks, setTasks] = useState([])
@@ -28,6 +32,7 @@ export default function Main() {
   return (
     <>
       <Appbar.Header>
+        <Appbar.Action icon="arrow-left" onPress={() => router.push('/')} />
         <Appbar.Content title="Tasks" />
       </Appbar.Header>
       <ScrollView contentContainerStyle={{padding: 16}}>
