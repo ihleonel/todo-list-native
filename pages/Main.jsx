@@ -1,9 +1,9 @@
-import { StyleSheet, View, ScrollView } from "react-native"
-import { useState } from 'react';
-import { TextInput, HelperText } from 'react-native-paper';
 import { Appbar } from "react-native-paper";
-import Task from "../components/tasks/Task";
+import { StyleSheet, View, ScrollView } from "react-native"
 import { useRouter } from "expo-router";
+import { useState } from 'react';
+import InputText from "../components/inputs/InputText";
+import Task from "../components/tasks/Task";
 
 export default function Main() {
 
@@ -43,16 +43,7 @@ export default function Main() {
           ))}
       </ScrollView>
       <View style={{marginHorizontal: 10}}>
-        <TextInput
-          label="Task"
-          value={text}
-          onChangeText={setText}
-          right={<TextInput.Icon icon="send" onPress={() => addTask(text)}/>}
-          error={error}
-        />
-        <HelperText type="error" visible={error}>
-          Task is required
-        </HelperText>
+        <InputText setTasks={setTasks} error={error} />
       </View>
     </>
   )
